@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import reactPlugin from '@vitejs/plugin-react';
 import eslintPlugin from '@nabla/vite-plugin-eslint';
@@ -8,10 +9,20 @@ export default defineConfig(({ command, mode }) => {
   // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
   const env = loadEnv(mode, process.cwd(), '');
 
+  const frontEnv = {
+    BACKEND_URL: env.BACKEND_URL,
+    SENTRY_DSN: env.SENTRY_DSN,
+  };
+
   return {
-    plugins: [eslintPlugin(), reactPlugin()],
     define: {
-      __APP_ENV__: env.APP_ENV,
+      'process.env': frontEnv,
     },
+    resolve: {
+      alias: {
+        '~src': resolve(__dirname, 'src'),
+      },
+    },
+    plugins: [reactPlugin(), eslintPlugin({ eslintOptions: { cache: false } })],
   };
 });

@@ -1,19 +1,33 @@
 {
   "name": "react-redux-template_vite",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "description": "Project template with ts/react/redux/styled-components stack",
   "scripts": {
     "start": "vite --port 3000 --open",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "precommit-lint": "tsc --noEmit && lint-staged",
+    "server": "json-server --watch src/examples/db.json --port 1111",
     "prepare": "husky install"
   },
   "dependencies": {
-    "prettier": "^2.8.2",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@sentry/react": "^7.27.0",
+    "@sentry/tracing": "^7.27.0",
+    "@sentry/types": "^7.29.0",
+    "final-form": "^4.20.7",
+    "immer": "^9.0.16",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-final-form": "^6.5.9",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.5.0",
+    "serializr": "^3.0.2",
+    "use-immer": "^0.8.1"
   },
   "devDependencies": {
     "@nabla/vite-plugin-eslint": "^1.5.0",
@@ -25,15 +39,14 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-react-app": "^7.0.1",
     "eslint-import-resolver-typescript": "^3.5.2",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.0",
+    "json-server": "^0.17.1",
     "lint-staged": "^13.1.0",
-    "typescript": "^4.9.3",
+    "prettier": "^2.8.2",
+    "typescript": "^4.9.4",
     "vite": "^4.0.0"
   },
   "lint-staged": {
-    "*.{js,ts,jxs,tsx}": "eslint --ignore-path ./.gitignore --max-warnings=0"
+    "*.{js,ts,jxs,tsx},!vite.config.ts": "eslint --max-warnings=0"
   }
 }

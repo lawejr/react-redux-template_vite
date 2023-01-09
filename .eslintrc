@@ -1,6 +1,6 @@
 {
-  "extends": ["airbnb", "react-app", "plugin:react/jsx-runtime", "plugin:import/typescript"],
-  "plugins": ["import"],
+  "extends": ["airbnb", "react-app", "plugin:react/jsx-runtime", "plugin:jsx-a11y/recommended", "plugin:import/typescript"],
+  "plugins": ["import", "jsx-a11y"],
   "rules": {
     "import/extensions": 0,
     "import/no-cycle": 2,
@@ -43,14 +43,11 @@
     "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "implicit-arrow-linebreak": "off",
-    "object-curly-newline": ["error", { "consistent": true }]
+    "object-curly-newline": ["error", { "consistent": true }],
+    "indent": ["error", 2, { "ignoredNodes": ["PropertyDefinition"] }] // eslint break rule when using decorators https://github.com/eslint/eslint/issues/15299
   },
   "settings": {
     "import/resolver": {
-      "node": {
-        "map": [["~", "./"]],
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
-      },
       "typescript": {
         "alwaysTryTypes": true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
         "project": "./"

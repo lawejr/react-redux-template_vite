@@ -17,6 +17,9 @@
     "jsx": "react-jsx",
     "experimentalDecorators": true,
     "types": ["node", "vite/client"],
+    "paths": {
+      "~src/*": ["./src/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
