@@ -7,7 +7,7 @@
     "start": "vite --port 3000 --open",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "precommit-lint": "",
+    "precommit-lint": "tsc --noEmit && lint-staged",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -34,5 +34,6 @@
     "vite": "^4.0.0"
   },
   "lint-staged": {
+    "*.{js,ts,jxs,tsx}": "eslint --ignore-path ./.gitignore --max-warnings=0"
   }
 }
