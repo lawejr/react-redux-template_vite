@@ -1,0 +1,38 @@
+{
+  "name": "react-redux-template_vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --port 3000 --open",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "precommit-lint": "",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "prettier": "^2.8.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@nabla/vite-plugin-eslint": "^1.5.0",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "lint-staged": {
+  }
+}

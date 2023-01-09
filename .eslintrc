@@ -1,0 +1,60 @@
+{
+  "extends": ["airbnb", "react-app", "plugin:react/jsx-runtime", "plugin:import/typescript"],
+  "plugins": ["import"],
+  "rules": {
+    "import/extensions": 0,
+    "import/no-cycle": 2,
+    "import/prefer-default-export": 0,
+    "import/no-default-export": 2,
+    "import/group-exports": 2,
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "never",
+        "pathGroups": [
+          {
+            "pattern": "**/components/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "**/components",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "groups": ["builtin", "external", "parent", "sibling", "index", "internal"]
+      }
+    ],
+    "react/jsx-filename-extension": [1,
+      {
+        "extensions": [
+          ".tsx",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    "arrow-parens": 0,
+    "no-param-reassign": [2, { "props": true,
+      "ignorePropertyModificationsFor": ["draft", "sentryEvent", "immeredState"]
+    }],
+    "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "implicit-arrow-linebreak": "off",
+    "object-curly-newline": ["error", { "consistent": true }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "map": [["~", "./"]],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        "project": "./"
+      }
+    }
+  }
+}
