@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { media } from './mediaQueries';
 import { customProperties } from './customProperties';
 
 export const globalStyles = css`
@@ -81,7 +82,7 @@ export const globalStyles = css`
 
   /* DESKTOP STYLES */
 
-  @media screen and (min-width: 961px) {
+  @media ${media.fromDesktop} {
     #app {
       min-width: var(--DESKTOP_MIN_WIDTH);
     }
