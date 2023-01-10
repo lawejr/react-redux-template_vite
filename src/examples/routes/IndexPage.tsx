@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { useImmer } from 'use-immer';
-import { useAppSelector, useAppDispatch } from '~src/hooks';
+import { useAppSelector, useAppDispatch } from '~/hooks';
 import {
   decrement,
   incrementAsync,
   selectCount,
   selectCountStatus,
-} from '~src/examples/domains/globalCounterSlice';
-import { Button } from '~src/examples/components/Button';
+} from '~/examples/domains/globalCounterSlice';
+import { Button } from '~/examples/components/Button';
 
 export function IndexPage() {
   const [exampleState, setExampleState] = useImmer({

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '~src/store';
-import { timeout } from '~src/utils/timeout';
+import type { RootState } from '~/store';
+import { timeout } from '~/utils/timeout';
 
 const hasToken = !!localStorage.getItem('token');
 

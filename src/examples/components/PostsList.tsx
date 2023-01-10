@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { useGetPostsQuery } from '~src/examples/api';
-import { useDeserialized } from '~src/hooks';
-import { sortedByTitleLength } from '~src/examples/domains/posts';
-import { PostEntity } from '~src/examples/domains/posts/models';
+import { useGetPostsQuery } from '~/examples/api';
+import { useDeserialized } from '~/hooks';
+import { sortedByTitleLength } from '~/examples/domains/posts';
+import { PostEntity } from '~/examples/domains/posts/models';
 
 export function PostsList() {
   const {

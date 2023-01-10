@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { urls } from '~src/router/urls';
-import { PostsList } from '~src/examples/components/PostsList';
-import { Article } from '~src/examples/components/Article';
+import { urls } from '~/router/urls';
+import { PostsList } from '~/examples/components/PostsList';
+import { Article } from '~/examples/components/Article';
 
 export function PostsListPage() {
   return (

@@ -1,14 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { urls } from '~src/router/urls';
+import { urls } from '~/router/urls';
 import {
   IndexPage,
   PostsListPage,
   PostDetailsPage,
   PostCreatePage,
   LoginPage,
-} from '~src/examples/routes';
-import { BaseLayout } from '~src/examples/components/BaseLayout';
-import { RequireAuth } from '~src/router/components/RequireAuth';
+} from '~/examples/routes';
+import { BaseLayout } from '~/examples/components/BaseLayout';
+import { RequireAuth } from '~/router/components/RequireAuth';
 
 function makePrivate(element: JSX.Element) {
   return <RequireAuth>{element}</RequireAuth>;

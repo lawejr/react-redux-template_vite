@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { ClazzOrModelSchema, list, object, serializable } from 'serializr';
-import { safeDeserialize } from '~src/utils/serializers';
+import { safeDeserialize } from '~/utils/serializers';
 
 type Result<A, B> = A extends Array<any> ? Array<B> : B;
 

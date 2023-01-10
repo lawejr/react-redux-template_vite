@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { useGetPostQuery } from '~src/examples/api/postsApi';
-import { PostEntity } from '~src/examples/domains/posts/models/PostEntity';
-import { useDeserialized } from '~src/hooks/useDeserialized';
+import { useGetPostQuery } from '~/examples/api/postsApi';
+import { PostEntity } from '~/examples/domains/posts/models/PostEntity';
+import { useDeserialized } from '~/hooks/useDeserialized';
 
 export function PostDetailsPage() {
   const { postId = '' } = useParams();

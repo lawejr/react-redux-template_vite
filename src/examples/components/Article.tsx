@@ -1,4 +1,4 @@
-import { useGetPostQuery } from '~src/examples/api';
+import { useGetPostQuery } from '~/examples/api';
 
 export function Article() {
   // Берём данные с сервера

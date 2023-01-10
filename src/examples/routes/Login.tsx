@@ -1,12 +1,12 @@
 import { InputHTMLAttributes, useCallback } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Form as FinalForm, Field, FieldRenderProps } from 'react-final-form';
-import { useAppDispatch, useAppSelector } from '~src/hooks';
+import { useAppDispatch, useAppSelector } from '~/hooks';
 import {
   login,
   selectAuthStatus,
   selectIsAuth,
-} from '~src/examples/domains/userSlice';
+} from '~/examples/domains/userSlice';
 
 interface FormValues {
   username: string;

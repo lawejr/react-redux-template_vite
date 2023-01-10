@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import {
   selectCount,
   selectCountStatus,
-} from '~src/examples/domains/globalCounterSlice';
-import { urls } from '~src/router/urls';
-import { useAppSelector } from '~src/hooks';
+} from '~/examples/domains/globalCounterSlice';
+import { urls } from '~/router/urls';
+import { useAppSelector } from '~/hooks';
 
 const Wrapper = styled.div`
   display: grid;

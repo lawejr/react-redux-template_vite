@@ -13,17 +13,33 @@
         "newlines-between": "never",
         "pathGroups": [
           {
-            "pattern": "**/components/**",
+            "pattern": "~/components/**",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "**/components",
+            "pattern": "~/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "../components/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "./components/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "./components",
             "group": "internal",
             "position": "after"
           }
         ],
-        "groups": ["builtin", "external", "parent", "sibling", "index", "internal"]
+        //        "unknown", "object", "type"
+        "groups": ["builtin", "external", "parent", "sibling", "object", "index", "internal"]
       }
     ],
     "react/jsx-filename-extension": [1,

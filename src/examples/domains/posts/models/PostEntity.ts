@@ -1,5 +1,5 @@
 import { alias, serializable } from 'serializr';
-import { BaseEntity } from '~src/domains/common/BaseEntity';
+import { BaseEntity } from '~/domains/common/BaseEntity';
 
 export class PostEntity extends BaseEntity {
   @serializable

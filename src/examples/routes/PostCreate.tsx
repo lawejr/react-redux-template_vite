@@ -1,9 +1,9 @@
 import { InputHTMLAttributes, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form as FinalForm, Field, FieldRenderProps } from 'react-final-form';
-import { useCreateNewPostMutation } from '~src/examples/api';
-import { PostEntity } from '~src/examples/domains/posts/models';
-import { urls } from '~src/router/urls';
+import { useCreateNewPostMutation } from '~/examples/api';
+import { PostEntity } from '~/examples/domains/posts/models';
+import { urls } from '~/router/urls';
 
 interface FormValues {
   title: string;

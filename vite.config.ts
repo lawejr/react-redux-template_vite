@@ -20,7 +20,7 @@ export default defineConfig(({ command, mode }) => {
     },
     resolve: {
       alias: {
-        '~src': resolve(__dirname, 'src'),
+        '~': resolve(__dirname, 'src'),
       },
     },
     plugins: [reactPlugin(), eslintPlugin({ eslintOptions: { cache: false } })],
