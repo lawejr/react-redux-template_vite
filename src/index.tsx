@@ -4,6 +4,8 @@ import { RouterProvider } from 'react-router-dom';
 import { enableAllPlugins } from 'immer';
 import { Provider } from 'react-redux';
 import * as Sentry from '@sentry/react';
+import { Global } from '@emotion/react';
+import { globalStyles } from '~/css/global';
 import { createConfig } from './sentry-config';
 import { store } from './store';
 import { router } from './router';
@@ -28,6 +30,7 @@ const root = createRoot(container);
 
 root.render(
   <StrictMode>
+    <Global styles={globalStyles} />
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>

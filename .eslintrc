@@ -36,6 +36,11 @@
             "pattern": "./components",
             "group": "internal",
             "position": "after"
+          },
+          {
+            "pattern": "~/css/**",
+            "group": "internal",
+            "position": "after"
           }
         ],
         //        "unknown", "object", "type"
