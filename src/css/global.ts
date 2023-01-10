@@ -19,9 +19,9 @@ export const globalStyles = css`
   }
 
   body {
-    background: #f6f6f6;
+    background: var(--PAGE_BG);
     box-sizing: border-box;
-    color: #333;
+    color: var(--BLACK);
     font-family: 'Proba', sans-serif;
     height: 100%;
     min-width: 320px;
