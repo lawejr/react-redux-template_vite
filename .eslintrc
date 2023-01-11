@@ -7,46 +7,6 @@
     "import/prefer-default-export": 0,
     "import/no-default-export": 2,
     "import/group-exports": 2,
-    "import/order": [
-      "error",
-      {
-        "newlines-between": "never",
-        "pathGroups": [
-          {
-            "pattern": "~/components/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "~/**",
-            "group": "external",
-            "position": "after"
-          },
-          {
-            "pattern": "../components/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "./components/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "./components",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "~/css/**",
-            "group": "internal",
-            "position": "after"
-          }
-        ],
-        //        "unknown", "object", "type"
-        "groups": ["builtin", "external", "parent", "sibling", "object", "index", "internal"]
-      }
-    ],
     "react/jsx-filename-extension": [1,
       {
         "extensions": [

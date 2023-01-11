@@ -15,7 +15,9 @@ export const globalStyles = css`
   html {
     min-height: 100%;
     overflow-y: scroll;
+    font-weight: 400;
     font-size: 14px;
+    line-height: 1.285;
   }
 
   body {
@@ -83,6 +85,11 @@ export const globalStyles = css`
   /* DESKTOP STYLES */
 
   @media ${media.fromDesktop} {
+    html {
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
     #app {
       min-width: var(--DESKTOP_MIN_WIDTH);
     }
