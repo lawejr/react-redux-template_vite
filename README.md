@@ -13,3 +13,7 @@ short doc:
 
 # Styleguide
 [Grouping CSS Properties by SMACSS](./_docs/css_order.md)
+
+# TODO:
+-[ ] plopjs
+-[ ] vite-imagetools

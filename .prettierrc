@@ -9,6 +9,7 @@
     "<THIRD_PARTY_MODULES>",
     "^~[^/components](.*)$",
     "^~/router(.*)$",
+    "^~/assets(.*)$",
     "^~/components(.*)$",
     "^~/css(.*)$",
     "^[./]"

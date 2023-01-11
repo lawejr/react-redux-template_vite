@@ -1,13 +1,14 @@
 import { useCallback } from 'react';
 import { useImmer } from 'use-immer';
-import { useAppSelector, useAppDispatch } from '~/hooks';
+import { Button } from '~/examples/components/Button';
 import {
   decrement,
   incrementAsync,
   selectCount,
   selectCountStatus,
 } from '~/examples/domains/globalCounterSlice';
-import { Button } from '~/examples/components/Button';
+import { useAppDispatch, useAppSelector } from '~/hooks';
+import car from '~/assets/car.svg';
 
 export function IndexPage() {
   const [exampleState, setExampleState] = useImmer({
@@ -36,6 +37,8 @@ export function IndexPage() {
       <Button onClick={() => dispatch(incrementAsync(1))}>
         Async increment global
       </Button>
+      <br />
+      <img src={car} alt="Car" />
     </>
   );
 }
