@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import { media } from './mediaQueries';
 import { customProperties } from './customProperties';
+import { media } from './mediaQueries';
 
 export const globalStyles = css`
   ${customProperties};
@@ -13,29 +13,29 @@ export const globalStyles = css`
   }
 
   html {
-    font-size: 14px;
     min-height: 100%;
     overflow-y: scroll;
+    font-size: 14px;
   }
 
   body {
-    background: var(--PAGE_BG);
-    box-sizing: border-box;
-    color: var(--BLACK);
-    font-family: 'Proba', sans-serif;
-    height: 100%;
-    min-width: 320px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    min-width: 320px;
+    height: 100%;
+    background: var(--PAGE_BG);
+    color: var(--BLACK);
+    font-family: 'Proba', sans-serif;
   }
 
   #app {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-    min-width: 100%;
     width: 100%;
+    min-width: 100%;
+    min-height: 100%;
   }
 
   .content-box {
@@ -66,10 +66,10 @@ export const globalStyles = css`
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
+    -webkit-user-modify: read-only;
     appearance: none;
     margin: 0;
     user-select: none;
-    -webkit-user-modify: read-only;
   }
 
   input[type='number'] {
