@@ -7,7 +7,7 @@
   "scripts": {
     "start": "vite --port 3000 --open",
     "build": "tsc && vite build",
-    "preview": "vite preview",
+    "preview": "npm run build && vite preview",
     "precommit-lint": "tsc --noEmit && lint-staged",
     "server": "json-server --watch src/examples/db.json --port 1111",
     "prepare": "husky install"
