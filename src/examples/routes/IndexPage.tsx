@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useImmer } from 'use-immer';
-import { Button } from '~/examples/components/Button';
+import { Button } from '~/examples/UIKit/Button';
 import {
-  decrement,
+  counterActions,
   incrementAsync,
   selectCount,
   selectCountStatus,
@@ -33,7 +33,9 @@ export function IndexPage() {
       <h2>Global</h2>
       <p>Counter: {globalCount}</p>
       <p>Global status: {globalCountStatus}</p>
-      <Button onClick={() => dispatch(decrement())}>Decrement global</Button>
+      <Button onClick={() => dispatch(counterActions.decrement())}>
+        Decrement global
+      </Button>
       <Button onClick={() => dispatch(incrementAsync(1))}>
         Async increment global
       </Button>
