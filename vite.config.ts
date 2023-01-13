@@ -47,7 +47,14 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     plugins: [
-      reactPlugin(),
+      reactPlugin({
+        babel: {
+          plugins: [
+            ['babel-plugin-syntax-decorators', {}],
+            ['@emotion/babel-plugin', {}],
+          ],
+        },
+      }),
       eslintPlugin({ eslintOptions: { cache: false } }),
       imageminPlugin(imageminConfig),
     ],
