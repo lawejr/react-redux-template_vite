@@ -16,4 +16,4 @@ short doc:
 
 # TODO:
 -[ ] plopjs
--[ ] vite-imagetools
+-[ ] try lazy import @sentry(very large bundle)
