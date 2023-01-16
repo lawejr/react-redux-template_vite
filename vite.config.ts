@@ -38,6 +38,9 @@ export default defineConfig(({ command, mode }) => {
   };
 
   return {
+    server: {
+      host: true,
+    },
     define: {
       'process.env': frontEnv,
     },
