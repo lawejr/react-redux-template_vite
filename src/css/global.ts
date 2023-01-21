@@ -58,7 +58,8 @@ export const globalStyles = css`
     max-width: 100%;
   }
 
-  p {
+  p,
+  figure {
     margin: 0;
   }
 
