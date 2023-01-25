@@ -14,7 +14,7 @@ const initialState: UserState = {
   status: 'pristine',
 };
 
-const login = createAsyncThunk('user/login', async () => {
+const loginThunk = createAsyncThunk('user/login', async () => {
   await timeout(200);
 
   localStorage.setItem('token', 'active_token');
@@ -28,14 +28,14 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(login.pending, immeredState => {
+      .addCase(loginThunk.pending, immeredState => {
         immeredState.status = 'loading';
       })
-      .addCase(login.fulfilled, immeredState => {
+      .addCase(loginThunk.fulfilled, immeredState => {
         immeredState.status = 'idle';
         immeredState.isAuth = true;
       })
-      .addCase(login.rejected, immeredState => {
+      .addCase(loginThunk.rejected, immeredState => {
         immeredState.status = 'failed';
         immeredState.isAuth = false;
       });
@@ -45,10 +45,13 @@ const userSlice = createSlice({
 const selectIsAuth = (state: RootState) => state.user.isAuth;
 const selectAuthStatus = (state: RootState) => state.user.status;
 const { reducer } = userSlice;
+const userActions = {
+  login: loginThunk,
+};
 
 export {
   type UserState,
-  login,
+  userActions,
   userSlice,
   selectIsAuth,
   selectAuthStatus,

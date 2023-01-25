@@ -1,12 +1,12 @@
 import { InputHTMLAttributes, useCallback } from 'react';
+import { Field, FieldRenderProps, Form as FinalForm } from 'react-final-form';
 import { Navigate, useLocation } from 'react-router-dom';
-import { Form as FinalForm, Field, FieldRenderProps } from 'react-final-form';
-import { useAppDispatch, useAppSelector } from '~/hooks';
 import {
-  login,
   selectAuthStatus,
   selectIsAuth,
+  userActions,
 } from '~/examples/domains/userSlice';
+import { useActionCreators, useAppSelector } from '~/hooks';
 
 interface FormValues {
   username: string;
@@ -20,20 +20,20 @@ function TextInput({ input, ...rest }: InputProps) {
 }
 
 export function LoginPage() {
-  const dispatch = useAppDispatch();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
 
+  const actions = useActionCreators(userActions);
   const isAuth = useAppSelector(selectIsAuth);
   const isLoading = useAppSelector(selectAuthStatus) === 'loading';
 
   const handleSubmit = useCallback(
     async (values: FormValues) => {
       if (values.username) {
-        dispatch(login());
+        actions.login();
       }
     },
-    [dispatch],
+    [actions],
   );
 
   if (isAuth) {
