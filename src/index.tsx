@@ -1,14 +1,21 @@
+import {
+  CacheProvider as EmotionCacheProvider,
+  Global as EmotionGlobal,
+} from '@emotion/react';
+import * as Sentry from '@sentry/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import { enableAllPlugins } from 'immer';
 import { Provider } from 'react-redux';
-import * as Sentry from '@sentry/react';
-import { Global } from '@emotion/react';
+import { RouterProvider } from 'react-router-dom';
+import createCache from '@emotion/cache';
+import { enableAllPlugins } from 'immer';
 import { globalStyles } from '~/css/global';
+import { router } from './router';
 import { createConfig } from './sentry-config';
 import { store } from './store';
-import { router } from './router';
+
+const emotionCache = createCache({ key: 'vite-template' });
+emotionCache.compat = true; // disable pseudo class ssr warnings
 
 const { SENTRY_DSN } = process.env;
 
@@ -30,9 +37,11 @@ const root = createRoot(container);
 
 root.render(
   <StrictMode>
-    <Global styles={globalStyles} />
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <EmotionCacheProvider value={emotionCache}>
+      <EmotionGlobal styles={globalStyles} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </EmotionCacheProvider>
   </StrictMode>,
 );
