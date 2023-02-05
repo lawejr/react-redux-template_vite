@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from 'styled-components';
 import { screenSizes } from './mediaQueries';
 
 export const customProperties = css`

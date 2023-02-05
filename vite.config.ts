@@ -54,7 +54,13 @@ export default defineConfig(({ command, mode }) => {
         babel: {
           plugins: [
             ['babel-plugin-syntax-decorators', {}],
-            ['@emotion/babel-plugin', {}],
+            [
+              'babel-plugin-styled-components',
+              {
+                displayName: true,
+                fileName: false,
+              },
+            ],
           ],
         },
       }),
