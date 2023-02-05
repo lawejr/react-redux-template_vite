@@ -1,13 +1,14 @@
-import * as Sentry from '@sentry/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { enableAllPlugins } from 'immer';
-import { GlobalStyles } from '~/css/global';
-import { router } from './router';
+import { Provider } from 'react-redux';
+import * as Sentry from '@sentry/react';
+import { Global } from '@emotion/react';
+import { globalStyles } from '~/css/global';
 import { createConfig } from './sentry-config';
 import { store } from './store';
+import { router } from './router';
 
 const { SENTRY_DSN } = process.env;
 
@@ -29,7 +30,7 @@ const root = createRoot(container);
 
 root.render(
   <StrictMode>
-    <GlobalStyles />
+    <Global styles={globalStyles} />
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>

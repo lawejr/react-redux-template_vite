@@ -1,11 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import {
   selectCount,
   selectCountStatus,
 } from '~/examples/domains/globalCounterSlice';
-import { useAppSelector } from '~/hooks';
 import { urls } from '~/router/urls';
+import { useAppSelector } from '~/hooks';
 
 const Wrapper = styled.div`
   display: grid;

@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
+import { css } from '@emotion/react';
 import { customProperties } from './customProperties';
 import { media } from './mediaQueries';
 
-export const GlobalStyles = createGlobalStyle`
+export const globalStyles = css`
   ${customProperties};
 
   *,
