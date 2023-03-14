@@ -17,7 +17,7 @@ const imageminConfig: unknown = {
         params: {
           overrides: {
             convertColors: {
-              currentColor: true,
+              currentColor: false,
             },
           },
         },
@@ -27,7 +27,7 @@ const imageminConfig: unknown = {
 };
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command: _, mode }) => {
   // Load env file based on `mode` in the current working directory.
   // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
   const env = loadEnv(mode, process.cwd(), '');
