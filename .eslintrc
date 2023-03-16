@@ -27,7 +27,8 @@
     "implicit-arrow-linebreak": "off",
     "object-curly-newline": ["error", { "consistent": true }],
     "indent": ["error", 2, { "ignoredNodes": ["PropertyDefinition"], "SwitchCase": 1 }], // eslint break rule when using decorators https://github.com/eslint/eslint/issues/15299
-    "no-confusing-arrow": 0
+    "no-confusing-arrow": 0,
+    "no-bitwise": 0
   },
   "settings": {
     "import/resolver": {
