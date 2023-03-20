@@ -1,10 +1,33 @@
-import { resolve } from 'path';
-import { defineConfig, loadEnv } from 'vite';
 import reactPlugin from '@vitejs/plugin-react';
 import eslintPlugin from '@nabla/vite-plugin-eslint';
+import { resolve } from 'path';
+import { defineConfig, loadEnv } from 'vite';
+import imageminPlugin from 'vite-plugin-imagemin';
+
+const imageminConfig: unknown = {
+  gifsicle: false,
+  optipng: false,
+  mozjpeg: false,
+  pngquant: false,
+  svgo: {
+    multipass: true,
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            convertColors: {
+              currentColor: false,
+            },
+          },
+        },
+      },
+    ],
+  },
+};
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command: _, mode }) => {
   // Load env file based on `mode` in the current working directory.
   // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
   const env = loadEnv(mode, process.cwd(), '');
@@ -15,6 +38,9 @@ export default defineConfig(({ command, mode }) => {
   };
 
   return {
+    server: {
+      host: true,
+    },
     define: {
       'process.env': frontEnv,
     },
@@ -23,6 +49,17 @@ export default defineConfig(({ command, mode }) => {
         '~': resolve(__dirname, 'src'),
       },
     },
-    plugins: [reactPlugin(), eslintPlugin({ eslintOptions: { cache: false } })],
+    plugins: [
+      reactPlugin({
+        babel: {
+          plugins: [
+            ['babel-plugin-syntax-decorators', {}],
+            ['@emotion/babel-plugin', {}],
+          ],
+        },
+      }),
+      eslintPlugin({ eslintOptions: { cache: false } }),
+      imageminPlugin(imageminConfig),
+    ],
   };
 });

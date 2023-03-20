@@ -1,22 +1,28 @@
 import { useCallback } from 'react';
 import { useImmer } from 'use-immer';
-import { useAppSelector, useAppDispatch } from '~/hooks';
+import { Button } from '~/examples/UIKit/Button';
 import {
-  decrement,
+  counterActions,
   incrementAsync,
   selectCount,
   selectCountStatus,
 } from '~/examples/domains/globalCounterSlice';
-import { Button } from '~/examples/components/Button';
+import { useActionCreators, useAppSelector } from '~/hooks';
+import car from '~/assets/car.svg';
+
+const allActions = {
+  ...counterActions,
+  incrementAsync,
+};
 
 export function IndexPage() {
   const [exampleState, setExampleState] = useImmer({
     title: 'Try Immer',
     count: 0,
   });
-  const dispatch = useAppDispatch();
   const globalCount = useAppSelector(selectCount);
   const globalCountStatus = useAppSelector(selectCountStatus);
+  const actions = useActionCreators(allActions);
 
   const handleLocalClick = useCallback(() => {
     setExampleState(draft => {
@@ -32,10 +38,12 @@ export function IndexPage() {
       <h2>Global</h2>
       <p>Counter: {globalCount}</p>
       <p>Global status: {globalCountStatus}</p>
-      <Button onClick={() => dispatch(decrement())}>Decrement global</Button>
-      <Button onClick={() => dispatch(incrementAsync(1))}>
+      <Button onClick={actions.decrement}>Decrement global</Button>
+      <Button onClick={() => actions.incrementAsync(1)}>
         Async increment global
       </Button>
+      <br />
+      <img src={car} alt="Car" />
     </>
   );
 }

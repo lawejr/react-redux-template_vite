@@ -7,9 +7,10 @@
     "(.*)react(.*)",
     "(.*)redux(.*)\",",
     "<THIRD_PARTY_MODULES>",
-    "^~[^/components](.*)$",
+    "^~[^/UIKit](.*)$",
     "^~/router(.*)$",
-    "^~/components(.*)$",
+    "^~/assets(.*)$",
+    "^~/UIKit(.*)$",
     "^~/css(.*)$",
     "^[./]"
   ],

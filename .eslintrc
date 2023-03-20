@@ -7,46 +7,7 @@
     "import/prefer-default-export": 0,
     "import/no-default-export": 2,
     "import/group-exports": 2,
-    "import/order": [
-      "error",
-      {
-        "newlines-between": "never",
-        "pathGroups": [
-          {
-            "pattern": "~/components/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "~/**",
-            "group": "external",
-            "position": "after"
-          },
-          {
-            "pattern": "../components/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "./components/**",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "./components",
-            "group": "internal",
-            "position": "after"
-          },
-          {
-            "pattern": "~/css/**",
-            "group": "internal",
-            "position": "after"
-          }
-        ],
-        //        "unknown", "object", "type"
-        "groups": ["builtin", "external", "parent", "sibling", "object", "index", "internal"]
-      }
-    ],
+    "react/require-default-props": 0,
     "react/jsx-filename-extension": [1,
       {
         "extensions": [
@@ -65,7 +26,11 @@
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "implicit-arrow-linebreak": "off",
     "object-curly-newline": ["error", { "consistent": true }],
-    "indent": ["error", 2, { "ignoredNodes": ["PropertyDefinition"] }] // eslint break rule when using decorators https://github.com/eslint/eslint/issues/15299
+    "indent": ["error", 2, { "ignoredNodes": ["PropertyDefinition"], "SwitchCase": 1 }], // eslint break rule when using decorators https://github.com/eslint/eslint/issues/15299
+    "no-confusing-arrow": 0,
+    "no-bitwise": 0,
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
   },
   "settings": {
     "import/resolver": {

@@ -3,12 +3,12 @@ import type { RootState } from '~/store';
 
 interface CounterState {
   value: number;
-  status: 'pristine' | 'idle' | 'loading' | 'failed';
+  status: 'init' | 'idle' | 'loading' | 'failed';
 }
 
 const initialState: CounterState = {
   value: 0,
-  status: 'pristine',
+  status: 'init',
 };
 
 const incrementAsync = createAsyncThunk(
@@ -51,8 +51,7 @@ const counterSlice = createSlice({
 const selectCount = (state: RootState) => state.counter.value;
 const selectCountStatus = (state: RootState) => state.counter.status;
 
-const { increment, decrement } = counterSlice.actions;
-const { reducer } = counterSlice;
+const { reducer, actions: counterActions } = counterSlice;
 
 function fetchCount(amount = 1) {
   return new Promise<{ data: number }>(resolve => {
@@ -68,7 +67,6 @@ export {
   counterSlice,
   selectCount,
   selectCountStatus,
-  increment,
-  decrement,
+  counterActions,
   reducer,
 };
