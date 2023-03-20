@@ -13,7 +13,7 @@ export const globalStyles = css`
   }
 
   html {
-    min-height: 100%;
+    height: 100%;
     overflow-y: scroll;
     font-size: 14px;
   }
