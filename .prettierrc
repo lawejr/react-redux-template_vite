@@ -16,5 +16,6 @@
   ],
   "importOrderSortSpecifiers": true,
   "order": "smacss",
-  "keepOverrides": true
+  "keepOverrides": true,
+//  "importOrderParserPlugins": ["typescript", "decorators-legacy"],
 }
