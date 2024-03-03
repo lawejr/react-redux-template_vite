@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { media } from './mediaQueries';
 
 const clearButton = css`
   background-color: transparent;
@@ -13,4 +14,12 @@ const clearList = css`
   list-style: none;
 `;
 
-export { clearButton, clearList };
+const centeredContainer = css`
+  padding: 0 var(--r16);
+
+  @media ${media.fromDesktop} {
+    padding: 0 max(calc(50% - var(--CONTAINER_WIDTH) / 2), var(--r20));
+  }
+`;
+
+export { clearButton, clearList, centeredContainer };
