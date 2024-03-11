@@ -1,13 +1,15 @@
+import * as Sentry from '@sentry/react';
+import dayjs from 'dayjs';
 import {
   Clazz,
   ClazzOrModelSchema,
+  PropSchema,
+  SKIP,
   custom,
   deserialize,
   list,
-  PropSchema,
-  SKIP,
 } from 'serializr';
-import * as Sentry from '@sentry/react';
+import { URL_DATE_FORMAT, date as dateFormatter } from '~/utils/date';
 
 function safeDeserialize<T>(
   modelSchema: ClazzOrModelSchema<T>,
@@ -63,4 +65,13 @@ function nullableList(schema: PropSchema): PropSchema {
   });
 }
 
-export { safeDeserialize, readonly, nullableList };
+const date: (format?: string) => PropSchema = (format = URL_DATE_FORMAT) =>
+  custom(
+    val =>
+      val instanceof Date || dayjs.isDayjs(val) || typeof val === 'string'
+        ? dateFormatter(val, URL_DATE_FORMAT)
+        : val,
+    val => (typeof val === 'string' ? dayjs(val, format) : val),
+  );
+
+export { safeDeserialize, readonly, nullableList, date };

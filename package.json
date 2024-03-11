@@ -20,6 +20,7 @@
     "@sentry/react": "^7.104.0",
     "@sentry/tracing": "^7.104.0",
     "@sentry/types": "^7.104.0",
+    "dayjs": "^1.11.10",
     "final-form": "^4.20.10",
     "immer": "^10.0.3",
     "react": "^18.2.0",
