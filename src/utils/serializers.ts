@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/react';
 import dayjs from 'dayjs';
 import {
+  AdditionalPropArgs,
   Clazz,
   ClazzOrModelSchema,
   PropSchema,
@@ -8,6 +9,7 @@ import {
   custom,
   deserialize,
   list,
+  primitive,
 } from 'serializr';
 import { URL_DATE_FORMAT, date as dateFormatter } from '~/utils/date';
 
@@ -65,6 +67,19 @@ function nullableList(schema: PropSchema): PropSchema {
   });
 }
 
+function nullablePrimitive(args?: AdditionalPropArgs): PropSchema {
+  return {
+    ...primitive(args),
+    serializer: (value?: string | number | null) => {
+      if (value === '') {
+        return null;
+      }
+
+      return value;
+    },
+  };
+}
+
 const date: (format?: string) => PropSchema = (format = URL_DATE_FORMAT) =>
   custom(
     val =>
@@ -74,4 +89,4 @@ const date: (format?: string) => PropSchema = (format = URL_DATE_FORMAT) =>
     val => (typeof val === 'string' ? dayjs(val, format) : val),
   );
 
-export { safeDeserialize, readonly, nullableList, date };
+export { safeDeserialize, readonly, nullableList, date, nullablePrimitive };
