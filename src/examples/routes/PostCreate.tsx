@@ -27,7 +27,7 @@ export function PostCreatePage() {
       const result = await createNewPost(post.toServer());
 
       if ('data' in result) {
-        navigate(`/${urls.POST_DETAILS(result.data.id)}`);
+        navigate(`/${urls.POST_DETAILS(result.data?.id)}`);
       }
     },
     [createNewPost, navigate],

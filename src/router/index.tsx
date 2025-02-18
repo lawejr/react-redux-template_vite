@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { BaseLayout } from '~/examples/UIKit/BaseLayout';
 import {
@@ -10,7 +11,7 @@ import {
 import { RequireAuth } from '~/router/components/RequireAuth';
 import { urls } from '~/router/urls';
 
-function makePrivate(element: JSX.Element) {
+function makePrivate(element: ReactNode) {
   return <RequireAuth>{element}</RequireAuth>;
 }
 

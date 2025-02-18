@@ -1,6 +1,5 @@
 import { PostEntity } from './models/PostEntity';
 
-// eslint-disable-next-line import/prefer-default-export
 export function sortedByTitleLength(posts: Array<PostEntity>) {
   const result = posts.slice();
 

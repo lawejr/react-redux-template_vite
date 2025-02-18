@@ -1,15 +1,14 @@
-import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing';
 import { ErrorEvent, EventHint } from '@sentry/types';
 import { version } from '../package.json';
+import { breadcrumbsIntegration, browserTracingIntegration } from '@sentry/react';
 
 export function createConfig(dsn: string) {
   return {
     dsn,
     // It also can be integrated with react-router/redux etc.
     integrations: [
-      new BrowserTracing(),
-      new Sentry.Integrations.Breadcrumbs({ console: false }),
+      browserTracingIntegration(),
+      breadcrumbsIntegration({ console: false }),
     ],
     environment: process.env.NODE_ENV,
     release: version,

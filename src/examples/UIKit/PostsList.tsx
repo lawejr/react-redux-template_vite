@@ -33,7 +33,7 @@ export function PostsList() {
       </ul>
     );
   } else if (isError) {
-    content = <div>{error.toString()}</div>;
+    content = <div>{error.toString()} {(error as any).status}</div>;
   }
 
   return (
