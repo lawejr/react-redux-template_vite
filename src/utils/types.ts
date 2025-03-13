@@ -2,7 +2,7 @@ function isObject(obj: unknown): obj is Record<string, any> {
   return !!obj && typeof obj === 'object' && !Array.isArray(obj);
 }
 
-function isDefined<T>(obj: T): obj is Required<T> {
+function isDefined<T>(obj: T | undefined | null): obj is T {
   return obj !== undefined && obj !== null;
 }
 
