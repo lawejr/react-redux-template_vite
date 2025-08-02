@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
-import { useLocation, Navigate } from 'react-router-dom';
-import { useAppSelector } from '~/hooks';
+import { Navigate, useLocation } from 'react-router-dom';
+
 import { selectIsAuth } from '~/examples/domains/userSlice';
+import { useAppSelector } from '~/hooks';
 
 export function RequireAuth({ children }: PropsWithChildren) {
   const isAuth = useAppSelector(selectIsAuth);

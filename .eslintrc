@@ -2,6 +2,7 @@
   "extends": ["airbnb", "react-app", "plugin:react/jsx-runtime", "plugin:jsx-a11y/recommended", "plugin:import/typescript", "prettier"],
   "plugins": ["import", "jsx-a11y"],
   "rules": {
+    "import/order": "off",
     "import/extensions": 0,
     "import/no-cycle": 2,
     "import/prefer-default-export": 0,

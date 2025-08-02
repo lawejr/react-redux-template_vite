@@ -17,5 +17,6 @@
   "importOrderSortSpecifiers": true,
   "order": "smacss",
   "keepOverrides": true,
-//  "importOrderParserPlugins": ["typescript", "decorators-legacy"],
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrderSeparation": true
 }

@@ -8,8 +8,8 @@ import {
   PostsListPage,
 } from '~/examples/routes';
 import { RequireAuth } from '~/router/components/RequireAuth';
-import { urls } from '~/router/urls';
 import { ReactNode } from 'react';
+import { urls } from '~/router/urls';
 
 function makePrivate(element: ReactNode) {
   return <RequireAuth>{element}</RequireAuth>;
