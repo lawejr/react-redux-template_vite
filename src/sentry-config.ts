@@ -1,43 +1,30 @@
 import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing';
-import { ErrorEvent, EventHint } from '@sentry/types';
-import { version } from '../package.json';
+import {
+  browserTracingIntegration,
+  breadcrumbsIntegration,
+} from '@sentry/react';
+import { version } from '../package.json'; // путь подставь свой
 
-export function createConfig(dsn: string) {
+export function createConfig(dsn: string): Sentry.BrowserOptions {
   return {
     dsn,
-    // It also can be integrated with react-router/redux etc.
-    integrations: [
-      new BrowserTracing(),
-      new Sentry.Integrations.Breadcrumbs({ console: false }),
-    ],
     environment: process.env.NODE_ENV,
     release: version,
 
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    // We recommend adjusting this value in production
+    integrations: [
+      browserTracingIntegration(),
+      breadcrumbsIntegration({ console: false }),
+    ],
+
     tracesSampleRate: 1.0,
-    beforeSend(sentryEvent: ErrorEvent, _: EventHint) {
+
+    beforeSend(event) {
+      const message = event.extra?.message;
       const isNetworkError =
-        sentryEvent.extra?.message &&
-        typeof sentryEvent.extra.message === 'string'
-          ? sentryEvent.extra.message.toLowerCase().includes('network error')
-          : false;
+        typeof message === 'string' &&
+        message.toLowerCase().includes('network error');
 
-      if (isNetworkError) {
-        return null;
-      }
-
-      // group events on list of various grounds
-      // const exception = hint.originalException as any;
-      //
-      // sentryEvent.fingerprint = [
-      //   String(exception.functionName),
-      //   String(exception.errorCode),
-      // ];
-
-      return sentryEvent;
+      return isNetworkError ? null : event;
     },
   };
 }

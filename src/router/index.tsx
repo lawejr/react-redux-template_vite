@@ -9,8 +9,9 @@ import {
 } from '~/examples/routes';
 import { RequireAuth } from '~/router/components/RequireAuth';
 import { urls } from '~/router/urls';
+import { ReactNode } from 'react';
 
-function makePrivate(element: JSX.Element) {
+function makePrivate(element: ReactNode) {
   return <RequireAuth>{element}</RequireAuth>;
 }
 

@@ -1,5 +1,4 @@
-import { InputHTMLAttributes, useCallback } from 'react';
-import { Field, FieldRenderProps, Form as FinalForm } from 'react-final-form';
+import { FormEvent, InputHTMLAttributes, useCallback } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import {
   selectAuthStatus,
@@ -8,15 +7,8 @@ import {
 } from '~/examples/domains/userSlice';
 import { useActionCreators, useAppSelector } from '~/hooks';
 
-interface FormValues {
-  username: string;
-}
-
-type InputProps = InputHTMLAttributes<HTMLInputElement> &
-  FieldRenderProps<string, any>;
-
-function TextInput({ input, ...rest }: InputProps) {
-  return <input type="text" {...input} {...rest} />;
+function TextInput(props: InputHTMLAttributes<HTMLInputElement>) {
+  return <input type="text" {...props} />;
 }
 
 export function LoginPage() {
@@ -28,8 +20,8 @@ export function LoginPage() {
   const isLoading = useAppSelector(selectAuthStatus) === 'loading';
 
   const handleSubmit = useCallback(
-    async (values: FormValues) => {
-      if (values.username) {
+    async (event: FormEvent<HTMLFormElement>) => {
+      if (event) {
         actions.login();
       }
     },
@@ -43,20 +35,10 @@ export function LoginPage() {
   return (
     <section>
       <h1>Login</h1>
-      <FinalForm onSubmit={handleSubmit}>
-        {({ handleSubmit: onSubmit, submitting, pristine }) => (
-          <form onSubmit={onSubmit}>
-            <Field<string>
-              name="username"
-              component={TextInput}
-              placeholder="username"
-            />
-            <button type="submit" disabled={submitting || pristine}>
-              {isLoading ? 'loading...' : 'Login'}
-            </button>
-          </form>
-        )}
-      </FinalForm>
+      <form onSubmit={handleSubmit}>
+        <TextInput name="username" />
+        <button type="submit">{isLoading ? 'loading...' : 'Login'}</button>
+      </form>
     </section>
   );
 }
