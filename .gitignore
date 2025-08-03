@@ -12,3 +12,6 @@ lerna-debug.log*
 /dist-ssr
 .env
 *.local
+
+*storybook.log
+storybook-static

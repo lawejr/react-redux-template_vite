@@ -1,9 +1,10 @@
 import reactPlugin from '@vitejs/plugin-react';
+
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite';
-import faviconsInjectPlugin from 'vite-plugin-favicons-inject';
 import imageminPlugin from 'vite-plugin-imagemin';
+
 // @ts-ignore
 import { version } from './package.json';
 
@@ -98,15 +99,11 @@ export default defineConfig(({ command: _, mode }) => {
     plugins: [
       reactPlugin({
         babel: {
-          plugins: [
-            ['babel-plugin-syntax-decorators', {}],
-            ['@emotion/babel-plugin', {}],
-          ],
+          plugins: [['babel-plugin-syntax-decorators', {}]],
         },
       }),
       eslintPlugin({ eslintOptions: { cache: false } }),
       imageminPlugin(imageminConfig),
-      faviconsInjectPlugin('./src/assets/favicon.png', faviconsConfig),
     ],
   };
 });

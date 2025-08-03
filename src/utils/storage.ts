@@ -1,18 +1,24 @@
+import { TFunction } from 'i18next';
+import i18n from '../i18n';
+
 class Storage {
   private storage?: globalThis.Storage;
 
   private static keys = {
     USER_DATA: 'user_data',
     AUTH_TOKEN: 'auth_token',
+    LANGUAGE: 'language',
   };
 
-  constructor(storage?: globalThis.Storage) {
+  constructor(t: TFunction, storage?: globalThis.Storage) {
     try {
       this.storage = storage || window.localStorage;
     } catch {
       // eslint-disable-next-line no-alert
       alert(
-        'Для корректно работы приложения, пожалуйста, разрешите ему хранить данные в настройках вашего браузера',
+        t('storageNotAvailable', {
+          ns: 'errors',
+        }),
       );
     }
   }
@@ -60,12 +66,20 @@ class Storage {
     return this.getItem(Storage.keys.AUTH_TOKEN);
   }
 
+  setLanguage(value: string) {
+    this.setItem(Storage.keys.LANGUAGE, value);
+  }
+
+  getLanguage(): string | null {
+    return this.getItem(Storage.keys.LANGUAGE);
+  }
+
   clear() {
     this.storage?.clear();
   }
 }
 
-const storage = new Storage();
+const storage = new Storage(i18n.t);
 Object.freeze(storage);
 
 export { storage };

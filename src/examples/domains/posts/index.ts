@@ -1,1 +1,0 @@
-export { sortedByTitleLength } from './postsSlice';

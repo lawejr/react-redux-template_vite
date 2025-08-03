@@ -2,7 +2,6 @@ import * as Sentry from '@sentry/react';
 import dayjs from 'dayjs';
 import {
   AdditionalPropArgs,
-  Clazz,
   ClazzOrModelSchema,
   PropSchema,
   SKIP,
@@ -11,7 +10,7 @@ import {
   list,
   primitive,
 } from 'serializr';
-import { URL_DATE_FORMAT, date as dateFormatter } from '~/utils/date';
+import { URL_DATE_FORMAT, date as dateFormatter } from './date';
 
 function safeDeserialize<T>(
   modelSchema: ClazzOrModelSchema<T>,
@@ -47,17 +46,24 @@ function safeDeserialize<T>(
   );
 }
 
-function readonly(model?: Clazz<unknown>): PropSchema {
+function readonly(schema?: PropSchema): PropSchema {
   return custom(
     () => SKIP,
-    (rawData: unknown) => {
+    (rawData: unknown, context, _, callback) => {
       if (!rawData) {
         return null;
       }
 
-      return model ? deserialize(model, rawData) : rawData;
+      return schema?.deserializer(rawData, callback, context);
     },
   );
+}
+
+function writeIds(args?: AdditionalPropArgs) {
+  return {
+    ...list(primitive(), { ...args }),
+    serializer: (value: Array<string>) => value || SKIP,
+  };
 }
 
 function nullableList(schema: PropSchema): PropSchema {
@@ -89,4 +95,11 @@ const date: (format?: string) => PropSchema = (format = URL_DATE_FORMAT) =>
     val => (typeof val === 'string' ? dayjs(val, format) : val),
   );
 
-export { safeDeserialize, readonly, nullableList, date, nullablePrimitive };
+export {
+  safeDeserialize,
+  readonly,
+  writeIds,
+  nullableList,
+  date,
+  nullablePrimitive,
+};
